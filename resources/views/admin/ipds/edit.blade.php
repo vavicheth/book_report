@@ -22,14 +22,14 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.ipd.fields.patient_helper') }}</span>
             </div>
-            <div class="form-group">
-                <label for="guardian">{{ trans('cruds.ipd.fields.guardian') }}</label>
-                <input class="form-control {{ $errors->has('guardian') ? 'is-invalid' : '' }}" type="text" name="guardian" id="guardian" value="{{ old('guardian', $ipd->guardian) }}">
-                @if($errors->has('guardian'))
-                    <span class="text-danger">{{ $errors->first('guardian') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.ipd.fields.guardian_helper') }}</span>
-            </div>
+{{--            <div class="form-group">--}}
+{{--                <label for="guardian">{{ trans('cruds.ipd.fields.guardian') }}</label>--}}
+{{--                <input class="form-control {{ $errors->has('guardian') ? 'is-invalid' : '' }}" type="text" name="guardian" id="guardian" value="{{ old('guardian', $ipd->guardian) }}">--}}
+{{--                @if($errors->has('guardian'))--}}
+{{--                    <span class="text-danger">{{ $errors->first('guardian') }}</span>--}}
+{{--                @endif--}}
+{{--                <span class="help-block">{{ trans('cruds.ipd.fields.guardian_helper') }}</span>--}}
+{{--            </div>--}}
             <div class="form-group">
                 <label>{{ trans('cruds.ipd.fields.age_range') }}</label>
                 <select class="form-control {{ $errors->has('age_range') ? 'is-invalid' : '' }}" name="age_range" id="age_range">

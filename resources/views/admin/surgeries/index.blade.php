@@ -25,16 +25,25 @@
                         {{ trans('cruds.surgery.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.surgery.fields.patient') }}
+                        HN (2)
                     </th>
                     <th>
-                        {{ trans('cruds.patient.fields.name_kh') }}
+                        NUP
+                    </th>
+                    <th>
+                        ឈ្មោះអ្នកជំងឺ (3)
                     </th>
                     <th>
                         {{ trans('cruds.surgery.fields.guardian') }}
                     </th>
                     <th>
                         {{ trans('cruds.surgery.fields.age_range') }}
+                    </th>
+                    <th>
+                        ភេទ
+                    </th>
+                    <th>
+                        អាសយដ្ឋាននិងលេខទូរស័ព្ទ (15)
                     </th>
                     <th>
                         {{ trans('cruds.surgery.fields.transfer_from') }}
@@ -130,26 +139,29 @@
     aaSorting: [],
     ajax: "{{ route('admin.surgeries.index') }}",
     columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'patient_hn', name: 'patient.hn' },
-{ data: 'patient.name_kh', name: 'patient.name_kh' },
-{ data: 'guardian', name: 'guardian' },
-{ data: 'age_range', name: 'age_range' },
-{ data: 'transfer_from', name: 'transfer_from' },
-{ data: 'date_admit', name: 'date_admit' },
-{ data: 'diag_admit', name: 'diag_admit' },
-{ data: 'date_surgery', name: 'date_surgery' },
-{ data: 'date_discharged', name: 'date_discharged' },
-{ data: 'diag_discharged', name: 'diag_discharged' },
-{ data: 'discharged_form', name: 'discharged_form' },
-{ data: 'cause_dead', name: 'cause_dead' },
-{ data: 'mother_dead', name: 'mother_dead' },
-{ data: 'discharged_condition', name: 'discharged_condition' },
-{ data: 'day_stay', name: 'day_stay' },
-{ data: 'payment_type', name: 'payment_type' },
-{ data: 'note', name: 'note' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
+        { data: 'placeholder', name: 'placeholder' },
+        { data: 'id', name: 'id' },
+        { data: 'patient_hn', name: 'patient.hn' },
+        { data: 'patient_nup', name: 'patient.nup' },
+        { data: 'patient.name_kh', name: 'patient.name_kh' },
+        { data: 'guardian', name: 'guardian' },
+        { data: 'age_range', name: 'age_range' },
+        { data: 'patient.gender', name: 'patient.gender' },
+        { data: 'patient_address', name: 'patient.address' },
+        { data: 'transfer_from', name: 'transfer_from' },
+        { data: 'date_admit', name: 'date_admit' },
+        { data: 'diag_admit', name: 'diag_admit' },
+        { data: 'date_surgery', name: 'date_surgery' },
+        { data: 'date_discharged', name: 'date_discharged' },
+        { data: 'diag_discharged', name: 'diag_discharged' },
+        { data: 'discharged_form', name: 'discharged_form' },
+        { data: 'cause_dead', name: 'cause_dead' },
+        { data: 'mother_dead', name: 'mother_dead' },
+        { data: 'discharged_condition', name: 'discharged_condition' },
+        { data: 'day_stay', name: 'day_stay' },
+        { data: 'payment_type', name: 'payment_type' },
+        { data: 'note', name: 'note' },
+        { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     order: [[ 1, 'desc' ]],
     pageLength: 100,

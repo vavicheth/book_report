@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.ipd.fields.patient') }}
+                            HN
                         </th>
                         <td>
                             {{ $ipd->patient->hn ?? '' }}
@@ -33,12 +33,29 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.ipd.fields.guardian') }}
+                            NUP
                         </th>
                         <td>
-                            {{ $ipd->guardian }}
+                            {{ $ipd->patient->nup ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            ឈ្មោះអ្នកជំងឺ
+                        </th>
+                        <td>
+                            {{ $ipd->patient->name_kh ?? '' }}
+                        </td>
+                    </tr>
+
+{{--                    <tr>--}}
+{{--                        <th>--}}
+{{--                            {{ trans('cruds.ipd.fields.guardian') }}--}}
+{{--                        </th>--}}
+{{--                        <td>--}}
+{{--                            {{ $ipd->guardian }}--}}
+{{--                        </td>--}}
+{{--                    </tr>--}}
                     <tr>
                         <th>
                             {{ trans('cruds.ipd.fields.age_range') }}
@@ -47,6 +64,23 @@
                             {{ App\Ipd::AGE_RANGE_SELECT[$ipd->age_range] ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            ភេទ
+                        </th>
+                        <td>
+                            {{ $ipd->patient->gender = '1' ? 'ប្រុស(8)' : 'ស្រី(9)' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            អាសយដ្ឋាន និងលេខទូរស័ព្ទ
+                        </th>
+                        <td>
+                            {{ $ipd->patient->address ?? '' }} {{ $ipd->patient->phone ?? '' }}
+                        </td>
+                    </tr>
+
                     <tr>
                         <th>
                             {{ trans('cruds.ipd.fields.transfer_from') }}

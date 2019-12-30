@@ -144,6 +144,17 @@
                         </a>
                     </li>
                 @endcan
+
+                <li class="nav-item">
+                    <a href="{{ route("admin.contact") }}" class="nav-link {{ request()->is('admin/contact') || request()->is('admin/contact/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-phone-volume">
+
+                        </i>
+                        <p>
+                            <span>Contact us</span>
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>

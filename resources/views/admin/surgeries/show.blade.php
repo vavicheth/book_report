@@ -25,10 +25,26 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.surgery.fields.patient') }}
+                            HN
                         </th>
                         <td>
                             {{ $surgery->patient->hn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            NUP
+                        </th>
+                        <td>
+                            {{ $surgery->patient->nup ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            ឈ្មោះអ្នកជំងឺ
+                        </th>
+                        <td>
+                            {{ $surgery->patient->name_kh ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -45,6 +61,22 @@
                         </th>
                         <td>
                             {{ App\Surgery::AGE_RANGE_SELECT[$surgery->age_range] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            ភេទ
+                        </th>
+                        <td>
+                            {{ $surgery->patient->gender = '1' ? 'ប្រុស(13)' : 'ស្រី(14)' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            អាសយដ្ឋាន និងលេខទូរស័ព្ទ (15)
+                        </th>
+                        <td>
+                            {{ $surgery->patient->address ?? '' }} {{ $surgery->patient->phone ?? '' }}
                         </td>
                     </tr>
                     <tr>

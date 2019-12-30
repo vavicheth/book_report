@@ -48,4 +48,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Surgeries
     Route::delete('surgeries/destroy', 'SurgeryController@massDestroy')->name('surgeries.massDestroy');
     Route::resource('surgeries', 'SurgeryController');
+
+    //Contact us
+    Route::view('/contact', 'admin.contacts.contact_us')->name('contact');
 });

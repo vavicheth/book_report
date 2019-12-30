@@ -10,6 +10,7 @@ use App\Ipd;
 use App\Patient;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -18,7 +19,13 @@ class IpdController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Ipd::with(['patient', 'department', 'creator'])->select(sprintf('%s.*', (new Ipd)->table));
+
+            if(Auth::user()->getIsAdminAttribute()){
+                $query = Ipd::with(['patient', 'department', 'creator'])->select(sprintf('%s.*', (new Ipd)->table));
+            }else{
+                $query = Ipd::where('department_id',Auth::user()->department_id)->with(['patient', 'department', 'creator'])->select(sprintf('%s.*', (new Ipd)->table));
+            }
+
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -45,9 +52,20 @@ class IpdController extends Controller
             $table->addColumn('patient_hn', function ($row) {
                 return $row->patient ? $row->patient->hn : '';
             });
-
+            $table->addColumn('patient_nup', function ($row) {
+                return $row->patient ? $row->patient->nup : '';
+            });
+            $table->addColumn('patient_address', function ($row) {
+                $address=$row->patient ? $row->patient->address : '';
+                $phone=$row->patient ? $row->patient->phone : '';
+                return $address . " ". $phone;
+            });
             $table->editColumn('patient.name_kh', function ($row) {
                 return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->name_kh) : '';
+            });
+            $table->addColumn('patient.gender', function ($row) {
+                $gender=$row->patient ? $row->patient->gender : '';
+                return $gender='1'? 'ប្រុស(8)' : 'ស្រី(9)';
             });
             $table->editColumn('guardian', function ($row) {
                 return $row->guardian ? $row->guardian : "";
@@ -110,6 +128,7 @@ class IpdController extends Controller
 
     public function store(StoreIpdRequest $request)
     {
+        $request->request->add(["creator_id"=>Auth::id(),"department_id"=>Auth::user()->department->id]);
         $ipd = Ipd::create($request->all());
 
         return redirect()->route('admin.ipds.index');

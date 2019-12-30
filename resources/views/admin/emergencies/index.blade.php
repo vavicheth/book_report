@@ -40,6 +40,9 @@
                         {{ trans('cruds.emergency.fields.age_range') }}
                     </th>
                     <th>
+                        ភេទ
+                    </th>
+                    <th>
                         អាសយដ្ឋាននិងលេខទូរស័ព្ទ (15)
                     </th>
                     <th>
@@ -149,6 +152,7 @@
                         { data: 'patient.name_kh', name: 'patient.name_kh' },
                         { data: 'guardian', name: 'guardian' },
                         { data: 'age_range', name: 'age_range' },
+                        { data: 'patient.gender', name: 'patient.gender' },
                         { data: 'patient_address', name: 'patient.address' },
                         { data: 'transfer_from', name: 'transfer_from' },
                         { data: 'diag_admit', name: 'diag_admit' },

@@ -59,6 +59,10 @@ class EmergencyController extends Controller
             $table->editColumn('patient.name_kh', function ($row) {
                 return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->name_kh) : '';
             });
+            $table->addColumn('patient.gender', function ($row) {
+                $gender=$row->patient ? $row->patient->gender : '';
+                return $gender='1'? 'ប្រុស(13)' : 'ស្រី(14)';
+            });
             $table->editColumn('guardian', function ($row) {
                 return $row->guardian ? $row->guardian : "";
             });

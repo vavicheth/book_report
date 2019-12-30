@@ -25,16 +25,22 @@
                         {{ trans('cruds.ipd.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.ipd.fields.patient') }}
+                        HN (2)
                     </th>
                     <th>
-                        {{ trans('cruds.patient.fields.name_kh') }}
+                        NUP
                     </th>
                     <th>
-                        {{ trans('cruds.ipd.fields.guardian') }}
+                        ឈ្មោះអ្នកជំងឺ (3)
                     </th>
                     <th>
                         {{ trans('cruds.ipd.fields.age_range') }}
+                    </th>
+                    <th>
+                        ភេទ
+                    </th>
+                    <th>
+                        អាសយដ្ឋាននិងលេខទូរស័ព្ទ (10)
                     </th>
                     <th>
                         {{ trans('cruds.ipd.fields.transfer_from') }}
@@ -136,9 +142,11 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'patient_hn', name: 'patient.hn' },
+{ data: 'patient_nup', name: 'patient.nup' },
 { data: 'patient.name_kh', name: 'patient.name_kh' },
-{ data: 'guardian', name: 'guardian' },
 { data: 'age_range', name: 'age_range' },
+{ data: 'patient.gender', name: 'patient.gender' },
+{ data: 'patient_address', name: 'patient.address' },
 { data: 'transfer_from', name: 'transfer_from' },
 { data: 'diag_admit', name: 'diag_admit' },
 { data: 'date_start_sick', name: 'date_start_sick' },

@@ -25,10 +25,26 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.emergency.fields.patient') }}
+                            HN
                         </th>
                         <td>
                             {{ $emergency->patient->hn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            NUP
+                        </th>
+                        <td>
+                            {{ $emergency->patient->nup ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            ឈ្មោះអ្នកជំងឺ
+                        </th>
+                        <td>
+                            {{ $emergency->patient->name_kh ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -47,6 +63,23 @@
                             {{ App\Emergency::AGE_RANGE_SELECT[$emergency->age_range] ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            ភេទ
+                        </th>
+                        <td>
+                            {{ $emergency->patient->gender = '1' ? 'ប្រុស(13)' : 'ស្រី(14)' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            អាសយដ្ឋាន និងលេខទូរស័ព្ទ (15)
+                        </th>
+                        <td>
+                            {{ $emergency->patient->address ?? '' }} {{ $emergency->patient->phone ?? '' }}
+                        </td>
+                    </tr>
+
                     <tr>
                         <th>
                             {{ trans('cruds.emergency.fields.transfer_from') }}
