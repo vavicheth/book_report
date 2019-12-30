@@ -125,8 +125,10 @@ class PatientController extends Controller
     {
         abort_if(Gate::denies('patient_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $emergency=$patient->patientEmergencies();
-        $emergency->delete();
+        $emergency=$patient->patientEmergencies()->delete();
+        $ipd=$patient->patientIpds()->delete();
+        $surgery=$patient->patientSurgeries()->delete();
+
 
         $patient->delete();
 

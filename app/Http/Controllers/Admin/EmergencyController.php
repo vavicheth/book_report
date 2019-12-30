@@ -20,10 +20,14 @@ class EmergencyController extends Controller
     {
 //        abort_if(Gate::denies('emergency_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         if ($request->ajax()) {
-//            $query = Emergency::where('department_id',Auth::user()->department_id)->with(['patient', 'department', 'creator'])->select(sprintf('%s.*', (new Emergency)->table));
-            $query = Emergency::where('department_id',Auth::user()->department_id)->with(['patient', 'department', 'creator'])->select(sprintf('%s.*', (new Emergency)->table));
-            $table = Datatables::of($query);
+            /* Admin can view all fields */
+            if(Auth::user()->getIsAdminAttribute()){
+                $query = Emergency::with(['patient', 'department', 'creator'])->select(sprintf('%s.*', (new Emergency)->table));
+            }else{
+                $query = Emergency::where('department_id',Auth::user()->department_id)->with(['patient', 'department', 'creator'])->select(sprintf('%s.*', (new Emergency)->table));
+            }
 
+            $table = Datatables::of($query);
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
@@ -115,6 +119,7 @@ class EmergencyController extends Controller
 
     public function create()
     {
+
         abort_if(Gate::denies('emergency_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $patients = Patient::all()->pluck('hn', 'id')->prepend(trans('global.pleaseSelect'), '');
